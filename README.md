@@ -1,89 +1,99 @@
 # 📊 Elevate Labs – Task 07: Basic Sales Summary from SQLite Database
 
-This project is part of the **Data Analyst Internship** at Elevate Labs.  
-It demonstrates how to connect Python to a SQLite database, run basic SQL queries, summarize sales data, and visualize the results using `matplotlib`.
-
----
-
-## 🚀 Objective
-Use SQL inside Python to pull simple sales info (like total quantity sold & total revenue) from a small SQLite database (`sales_data.db`) and display:
-1. Results in the terminal.
-2. A simple bar chart of revenue per product.
-
----
-
-## 🛠 Tools & Libraries Used
-- **Python** (3.8+)
-- **sqlite3** – Database connection
-- **pandas** – Data manipulation
-- **matplotlib** – Data visualization
+This repository contains the solution for **Task 07** of the Data Analyst Internship at Elevate Labs.  
+It demonstrates how to:
+- Create and populate a small SQLite database (`sales_data.db`)
+- Query total quantity sold and revenue per product using SQL inside Python
+- Display results in the terminal
+- Visualize revenue using a simple bar chart with `matplotlib`
 
 ---
 
 ## 📂 Project Structure
 | File | Description |
 |------|-------------|
-| `T07.py` | Main Python script for connecting to DB, running queries, and generating chart |
-| `T_07.py` | Alternative version of the script |
-| `sales_data.db` | SQLite database containing the sales table |
-| `total_revenue.png` | Bar chart visualization of total revenue per product |
+| `T07.py` | Creates the SQLite database and inserts sample sales data |
+| `T_07.py` | Connects to the database, runs SQL queries, prints results, and generates a bar chart |
+| `sales_data.db` | SQLite database created by `T07.py` |
 | `README.md` | Project documentation |
 
 ---
 
-## 📊 SQL Query Used
-```sql
-SELECT 
-    product, 
-    SUM(quantity) AS total_qty, 
-    SUM(quantity * price) AS revenue
+## 🛠 Tools & Libraries
+- **Python** (3.8+)
+- **sqlite3** – For database creation & querying
+- **pandas** – For loading SQL results into a DataFrame
+- **matplotlib** – For creating the bar chart
+
+Install required Python packages:
+```bash
+pip install pandas matplotlib
+```
+🚀 How to Run
+```
+1️⃣ Step 1 – Create the Database
+
+Run:
+
+python T07.py
+
+
+This will:
+
+Create the sales table
+
+Insert sample products (laptop, mouse, keyboard) with quantity & price
+```
+
+2️⃣ Step 2 – Query & Visualize Data
+```
+Run:
+
+python T_07.py
+
+
+This will:
+
+Connect to sales_data.db
+```
+
+Run the SQL query
+```
+SELECT product, 
+       SUM(quantity) AS total_qty, 
+       SUM(quantity * price) AS revenue
 FROM sales
 GROUP BY product;
-📸 Output Example
-Terminal Output: A table showing total quantity and revenue for each product.
 ```
-Visualization:
+Print the summary table in the terminal
+
+Display a bar chart of Total Revenue by Product
+
+📸 Example Output
+
 ```
-⚙️ How to Run the Project
-Clone the repository
+Terminal Output:
 
-bash
-Copy
-Edit
-git clone https://github.com/pranavvv0016/elevate_labs_task07.git
-cd elevate_labs_task07
-Install required packages
-
-bash
-Copy
-Edit
-pip install pandas matplotlib
-Run the script
-
-bash
-Copy
-Edit
-python T07.py
-View Output
-
-Results will print in the terminal.
-
-Bar chart will be saved as total_revenue.png.
+   product  total_qty  revenue
+0  keyboard          3    225.0
+1    laptop          3   3600.0
+2     mouse          7    175.0
 ```
 🎯 Learning Outcomes
+
 ```
 By completing this task, you will:
 
-Connect Python to a SQLite database
+Create and populate a SQLite database using Python
 
-Write and execute basic SQL queries
+Write and run SQL queries inside Python
 
-Perform data aggregation with GROUP BY
+Use pandas to handle query results
 
-Visualize results using matplotlib
+Create visualizations with matplotlib
 ```
-📬 Contact
+👤 Author
 ```
-Author: Pranav Narsingoju
+Pranav Narsingoju
 GitHub: @pranavvv0016
 ```
